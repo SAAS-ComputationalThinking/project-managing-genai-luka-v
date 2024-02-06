@@ -1,0 +1,24 @@
+ask it how to make snake game
+
+index:
+make grid container
+make the snake head
+make a tail (starts with 2 segments)
+
+style: 
+give the food a image
+
+scrypt:
+locate x and y of each segment
+locate x and y of food
+locate x and y of wall
+make a grid that is the map with light colors
+make a funtion that does ticks
+make the snake move forward each tick in the direction of the most recent arrow press
+make all segments move to the forward segment each tick
+make the walls or body kill if overlap on each tick
+make that if you ate on the tick your last tail one duplicates
+
+
+ideas:
+funtion to allow the new tail segment 
