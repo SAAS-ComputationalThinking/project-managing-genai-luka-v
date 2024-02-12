@@ -9,3 +9,10 @@
     width: 43px;
     
 }
+
+.apple{
+
+background-image: url("appleimg.png");
+background-size: cover; 
+
+}

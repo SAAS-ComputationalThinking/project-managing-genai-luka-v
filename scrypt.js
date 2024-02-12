@@ -3,7 +3,24 @@ const start = document.getElementById('start');
 start.addEventListener('click', snakegrid);
 
 var Occelate = "white";
-
+//arrowpressed
+window.addEventListener('keydown', function(event) {
+    switch(event.key) {
+        case 'ArrowLeft':
+            console.log('Left arrow key pressed');
+            break;
+        case 'ArrowRight':
+            console.log('Right arrow key pressed');
+            break;
+        case 'ArrowUp':
+            console.log('Up arrow key pressed');
+            break;
+        case 'ArrowDown':
+            console.log('Down arrow key pressed');
+            break;
+    }
+});
+//makegrid
 function snakegrid(){
     let gridItem;
 for (let i = 0; i < 10; i++) {
@@ -34,27 +51,30 @@ for (let i = 0; i < 10; i++) {
     gridItem.id =`${i}${r}`;
     grid.appendChild(gridItem);
     }
+
 }
-setInterval(gamerun, 1000);
+
 }
-var snakelife = true;
-var tag = 4;
-function gamerun(){
-    while (snakelife == true){
-        console.log('cool');
-        tag = (tag+1);
-        if (tag>5000){
-            snakelife = false;
-        }
+var foodlife = "uneaten";
+var foodlocation = 10;
+//snake move
+setInterval(snakemove, 500);
+
+function snakemove(){
+    //food
+    let foodcon;
+if (foodlife == "uneaten"){
+    foodlocation = Math.floor(Math.random()*100);
+    foodcon = document.getElementById(`${foodlocation}`);
+    console.log(foodlocation, foodcon);
+    foodcon.classList.add("apple");
+    foodcon.classList.remove("asquare");
+    foodcon.backgroundColor.remove("black");
+    foodcon.backgroundColor.remove("white");
+    // foodcon.style.backgroundColor = "red";
+    foodlife = "eaten";
     
-
-
-
-    }
+    
+}
 
 }
-    var snakehead = 46;
-    function headmove(){
-
-    }
-
