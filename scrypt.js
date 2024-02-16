@@ -74,32 +74,183 @@ snakelife = "safe";
 
 
 
-const snakeloclist = document.createElement('ul');
 let snakesegment = 1;
 var foodlife = "uneaten";
 var foodlocation = 10;
 var newfood = "true";
+var snakeloclist = [];
+var snakegrowth = "no"
+let onlyafterrun;
+let snakecurloc2;
+var startmove = "notyet";
+var ultix = [];
+var wegood = "yeah";
+
 //snake move
-setInterval(snakemove, 500);
+setInterval(snakemove, 350);
 
 function snakemove(){
+    if (snakelife == "dead"){
+        const deadmaybe = document.getElementById("deadtype");
+        deadmaybe = "you are now DEAD";
+
+    }
+        const snakecurloc5 = document.getElementById(`${ultix[0]}`)
+        if(Math.floor((ultix[0])/10)% 2 != 0){
+        if((ultix[0]) % 2 == 0){
+            if (snakecurloc5) {
+            snakecurloc5.style.backgroundColor = "black";
+            if (foodlife == "uneaten"){ 
+                snakecurloc5.classList.remove("apple");     
+                }   
+        }
+        }
+        else{
+            if (snakecurloc5) {
+                snakecurloc5.style.backgroundColor = "white";
+                if (foodlife == "uneaten"){ 
+                    snakecurloc5.classList.remove("apple");     
+                    }   
+        }
+    }
+}
+    if(Math.floor((ultix[0])/10)% 2 == 0){
+        if((ultix[0]) % 2 == 0){
+            if (snakecurloc5) {
+                snakecurloc5.style.backgroundColor = "white";  
+                if (foodlife == "uneaten"){ 
+                snakecurloc5.classList.remove("apple");     
+                }   
+        }
+        }
+        else{
+            if (snakecurloc5) {
+                snakecurloc5.style.backgroundColor = "black" ; 
+                if (foodlife == "uneaten"){ 
+                    snakecurloc5.classList.remove("apple");     
+                    }       
+        }
+    }
+}
+
+    snakeloclist[0]=snakeloc;
+    //console.log(snakeloclist, "this is the snake list")
     //food
     let foodcon;
 if (foodlife == "uneaten"){
     foodlocation = (Math.floor(Math.random()*100))+10;
-    if (foodlocation<10){
-       //  foodcon = document.getElementById(`${0}${foodlocation}`);
-        foodcon = document.getElementById('0' + foodlocation);
+    /*
+    for (let r = 0; r < snakeloclist.length; r++) {
+        if(foodlocation == snakeloclist[r]){
+            wegood = "nope"
+            foodlife = "uneaten"
+            console.log(wegood);
+        }
     }
+    console.log(wegood);
+    */
+    //if(wegood = "yeah"){
     foodcon = document.getElementById(`${foodlocation}`);
     console.log(foodlocation, foodcon);
     foodcon.classList.add("apple");
-    foodcon.classList.remove("asquare");
+    //foodcon.classList.remove("asquare");
+    foodcon.classList.remove("snakehead");
+    foodcon.classList.remove("snakebody");
     foodcon.style.backgroundColor = '';
     // foodcon.style.backgroundColor = "red";
     foodlife = "eaten";
+  //  console.log(wegood);
+   // }
+  //  else{
+  //      wegood = "yeah"
+  //  }
     
+}
+
+
+//this is the re-color funtion
+
+if(startmove == "true"){
+for (let r = 0; r < snakeloclist.length; r++) {
+        const bodyatm = document.getElementById(`${snakeloclist[r]}`);
+        bodyatm.style.backgroundColor = '';
+        bodyatm.classList.add("snakebody");
+        bodyatm.classList.remove("asquare");
+        //bodyatm.classList.remove("apple");
+        bodyatm.classList.remove("snakehead");
+        bodyatm.classList.remove("snaketail");
+}
+//console.log(snakeloclist); 
+}
+if(startmove == "true"){
+    for (let r = 0; r < snakeloclist.length; r++) {
+if(snakeloclist[r+1] == snakeloc){
+    snakelife = "dead";
+
+}
+    }
+    //console.log(snakeloclist); 
+    }
+
+
+
+/*
+    if( r != 0){
+bodyatm.classList.add("snakebody");
+bodyatm.classList.remove("asquare");
+bodyatm.classList.remove("snakehead");
+snakeloclist[r] = snakeloclist[r-1];
+    }
+if (r == 0){
     
+    bodyatm.classList.add("snakehead");
+}
+
+
+
+
+
+const tailatm = document.getElementById(`${snakeloclist[snakeloclist.length]}`)
+if(startmove == "true"){
+    if(snakegrowth !="yes"){
+    if(parseInt(tailatm.id) % 2 == 0){
+        tailatm.backgroundColor = "white";
+    snakegrowth ="no";
+    }
+    else{
+        tailatm.backgroundColor = "black"
+        snakegrowth ="no";
+    }
+}
+}
+*/
+
+
+
+
+
+if (snakedir == "down"){
+    snakeloc = snakeloc+1;
+    startmove = "true";
+}
+if (snakedir == "up"){
+    snakeloc = snakeloc-1;
+    startmove = "true";
+}
+if (snakedir == "left"){
+    snakeloc = snakeloc-10;
+    startmove = "true";
+}
+if (snakedir == "right"){
+    snakeloc = snakeloc+10;
+    startmove = "true";
+
+}
+if (snakeloc == foodlocation){
+    snakesegment = snakesegment+1;
+    foodlife = "uneaten";
+    console.log (snakeloc ,foodlocation)
+    snakegrowth = "yes";
 }
 
 if (snakelife == "safe"){
@@ -107,32 +258,37 @@ const snakecurloc = document.getElementById(`${snakeloc}`)
 snakecurloc.classList.add("snakehead");
 snakecurloc.classList.remove("asquare");
 snakecurloc.style.backgroundColor = '';
-
-const listItem = document.createElement('li');
-listItem.classList.add =(`${snakeloc}`);
-snakeloclist.appendChild(listItem);
-if (snakedir == "down"){
-    snakeloc = snakeloc+1;
-}
-if (snakedir == "up"){
-    snakeloc = snakeloc-1;
-}
-if (snakedir == "left"){
-    snakeloc = snakeloc-10;
-}
-if (snakedir == "right"){
-    snakeloc = snakeloc+10;
-
-}
-if (snakeloc == foodlocation){
-    snakesegment = snakesegment+1;
-    foodlife = "uneaten";
-    console.log (snakeloc ,foodlocation)
-}
 }
 
 
 
+
+
+let snakelife2;
+if(snakelife2 == "dead"){
+snakelife = "dead";
+}
+
+if(snakeloc> 109|| snakeloc<10){
+    console.log("death");
+    snakelife2 = "dead";
+}
+
+
+
+
+onlyafterrun = "yes";
+
+if(snakegrowth == "yes"){
+    snakeloclist.push(snakeloc);
+    snakegrowth ="no";
+}
+ultix[0] = snakeloclist[snakeloclist.length-1];
+for (let r = snakeloclist.length - 1; r > 0; r--) {
+    
+    const snakecurloc4 = document.getElementById(`${snakeloclist[r]}`)
+    snakeloclist[r] = snakeloclist[r - 1];
+}
 /*
 for (let sn = 0; sn < snakesegment; sn++){
 
