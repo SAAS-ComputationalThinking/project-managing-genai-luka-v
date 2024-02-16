@@ -14,5 +14,17 @@
 
 background-image: url("appleimg.png");
 background-size: cover; 
+position: absolute;
+height: 43px;
+width: 43px;
 
+}
+.snakehead{
+
+    background-image: url("snakehead.jpg");
+    background-size: cover; 
+    position: absolute;
+    height: 43px;
+    width: 43px;
+    
 }
