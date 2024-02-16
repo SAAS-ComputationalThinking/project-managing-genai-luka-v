@@ -92,7 +92,7 @@ setInterval(snakemove, 350);
 function snakemove(){
     if (snakelife == "dead"){
         const deadmaybe = document.getElementById("deadtype");
-        deadmaybe = "you are now DEAD";
+        deadmaybe.textContent = "DEAD!";
 
     }
         const snakecurloc5 = document.getElementById(`${ultix[0]}`)
@@ -101,16 +101,20 @@ function snakemove(){
             if (snakecurloc5) {
             snakecurloc5.style.backgroundColor = "black";
             if (foodlife == "uneaten"){ 
-                snakecurloc5.classList.remove("apple");     
+                snakecurloc5.classList.remove("apple");      
                 }   
+                snakecurloc5.classList.remove("snakebody");  
+                snakecurloc5.classList.add("asquare"); 
         }
         }
         else{
             if (snakecurloc5) {
                 snakecurloc5.style.backgroundColor = "white";
                 if (foodlife == "uneaten"){ 
-                    snakecurloc5.classList.remove("apple");     
+                    snakecurloc5.classList.remove("apple");  
                     }   
+                    snakecurloc5.classList.remove("snakebody");  
+                    snakecurloc5.classList.add("asquare");   
         }
     }
 }
@@ -119,16 +123,20 @@ function snakemove(){
             if (snakecurloc5) {
                 snakecurloc5.style.backgroundColor = "white";  
                 if (foodlife == "uneaten"){ 
-                snakecurloc5.classList.remove("apple");     
+                    snakecurloc5.classList.remove("apple");       
                 }   
+                snakecurloc5.classList.remove("snakebody");  
+                snakecurloc5.classList.add("asquare");  
         }
         }
         else{
             if (snakecurloc5) {
                 snakecurloc5.style.backgroundColor = "black" ; 
                 if (foodlife == "uneaten"){ 
-                    snakecurloc5.classList.remove("apple");     
+                    snakecurloc5.classList.remove("apple");      
                     }       
+                    snakecurloc5.classList.remove("snakebody");  
+                    snakecurloc5.classList.add("asquare");   
         }
     }
 }
@@ -232,10 +240,16 @@ if(startmove == "true"){
 if (snakedir == "down"){
     snakeloc = snakeloc+1;
     startmove = "true";
+    if (snakeloc == 10||snakeloc == 20||snakeloc == 30||snakeloc == 40||snakeloc == 50||snakeloc == 60||snakeloc == 70||snakeloc == 80||snakeloc == 90||snakeloc == 100){
+        snakelife = "dead";
+    }
 }
 if (snakedir == "up"){
     snakeloc = snakeloc-1;
     startmove = "true";
+    if (snakeloc == 19||snakeloc == 29||snakeloc == 39||snakeloc == 49||snakeloc == 59||snakeloc == 69||snakeloc == 79||snakeloc == 89||snakeloc == 99||snakeloc == 109){
+        snakelife = "dead";
+    }
 }
 if (snakedir == "left"){
     snakeloc = snakeloc-10;
