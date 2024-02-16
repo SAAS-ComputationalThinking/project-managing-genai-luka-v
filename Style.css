@@ -1,0 +1,48 @@
+#snakehead{
+    background-image: snake- ;
+    
+}
+.asquare{
+    background-color: aliceblue; 
+    position: absolute;
+    height: 43px;
+    width: 43px;
+    
+}
+
+.apple{
+
+background-image: url("appleimg.png");
+background-size: cover; 
+position: absolute;
+height: 43px;
+width: 43px;
+
+}
+.snakehead{
+
+    background-image: url("snakehead.jpg");
+    background-size: cover; 
+    position: absolute;
+    height: 43px;
+    width: 43px;
+    
+}
+.snakebody{
+
+    background-color: green;
+    background-size: cover; 
+    border-radius: 20%;
+    position: absolute;
+    height: 43px;
+    width: 43px;
+    
+}
+.snaketail{
+    background-color: black;
+    background-size: cover; 
+    position: absolute;
+    height: 43px;
+    width: 43px;
+    
+}
