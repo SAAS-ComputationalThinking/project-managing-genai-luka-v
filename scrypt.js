@@ -87,7 +87,7 @@ var ultix = [];
 var wegood = "yeah";
 
 //snake move
-setInterval(snakemove, 150);
+setInterval(snakemove, 350);
 
 function snakemove(){
     if (snakelife == "dead"){
